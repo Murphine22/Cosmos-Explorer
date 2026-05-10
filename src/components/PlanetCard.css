@@ -1,10 +1,10 @@
 .planet-card {
   position: relative;
-  background: rgba(10, 22, 40, 0.7);
+  background: var(--color-surface);
   border: var(--border-subtle);
-  border-radius: 4px;
+  border-radius: 8px;
   overflow: hidden;
-  transition: var(--transition);
+  transition: var(--theme-transition), transform 0.3s ease;
   animation: card-reveal 0.6s ease-out both;
   cursor: default;
 }
@@ -13,6 +13,10 @@
   transform: translateY(-8px);
   border-color: rgba(0, 212, 255, 0.35);
   box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 0 30px var(--planet-glow, rgba(0,212,255,0.2));
+}
+
+[data-theme="light"] .planet-card:hover {
+  box-shadow: 0 20px 60px rgba(0,0,0,0.08), 0 0 30px var(--planet-glow, rgba(0,102,204,0.15));
 }
 
 @keyframes card-reveal {
@@ -32,7 +36,7 @@
   letter-spacing: 0.1em;
   color: var(--color-void);
   padding: 4px 8px;
-  border-radius: 2px;
+  border-radius: 4px;
 }
 
 /* Figure */
@@ -95,6 +99,7 @@
   color: var(--color-white);
   margin-bottom: 14px;
   line-height: 1.1;
+  transition: var(--theme-transition);
 }
 
 .planet-card__distance {
@@ -110,6 +115,7 @@
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--color-accent);
+  transition: var(--theme-transition);
 }
 
 .planet-card__distance-value {
@@ -117,6 +123,7 @@
   font-size: 1rem;
   font-weight: 600;
   color: var(--color-white);
+  transition: var(--theme-transition);
 }
 
 .planet-card__distance-unit {
@@ -124,6 +131,7 @@
   font-size: 0.6rem;
   color: var(--color-muted);
   font-weight: 400;
+  transition: var(--theme-transition);
 }
 
 .planet-card__divider {
@@ -138,6 +146,7 @@
   color: var(--color-muted);
   line-height: 1.6;
   margin-bottom: 12px;
+  transition: var(--theme-transition);
 }
 
 .planet-card__caption {
@@ -146,6 +155,11 @@
   letter-spacing: 0.15em;
   text-transform: uppercase;
   color: rgba(184, 212, 240, 0.3);
+  transition: var(--theme-transition);
+}
+
+[data-theme="light"] .planet-card__caption {
+  color: rgba(58, 74, 106, 0.4);
 }
 
 /* Hover glow */
@@ -159,4 +173,58 @@
 
 .planet-card:hover .planet-card__glow {
   opacity: 1;
+}
+
+/* ---- Mobile ---- */
+@media (max-width: 768px) {
+  .planet-card__content {
+    padding: 16px;
+  }
+
+  .planet-card__name {
+    font-size: 1rem;
+  }
+
+  .planet-card__distance-value {
+    font-size: 0.9rem;
+  }
+
+  .planet-card__fact {
+    font-size: 0.7rem;
+  }
+
+  .planet-card:hover {
+    transform: translateY(-4px);
+  }
+}
+
+@media (max-width: 480px) {
+  .planet-card__figure {
+    aspect-ratio: 16 / 10;
+  }
+
+  .planet-card__content {
+    padding: 14px;
+  }
+
+  .planet-card__name {
+    font-size: 0.95rem;
+    margin-bottom: 10px;
+  }
+
+  .planet-card__distance {
+    margin-bottom: 10px;
+  }
+
+  .planet-card__fact {
+    font-size: 0.7rem;
+    margin-bottom: 8px;
+  }
+
+  .planet-card__order {
+    top: 10px;
+    left: 10px;
+    font-size: 0.55rem;
+    padding: 3px 6px;
+  }
 }

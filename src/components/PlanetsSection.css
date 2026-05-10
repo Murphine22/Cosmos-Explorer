@@ -1,8 +1,9 @@
 .planets-section {
   position: relative;
   padding: var(--section-padding);
-  background: linear-gradient(180deg, var(--color-void) 0%, var(--color-deep) 50%, var(--color-void) 100%);
+  background: var(--gradient-planets);
   overflow: hidden;
+  transition: var(--theme-transition);
 }
 
 .planets-section__bg {
@@ -12,6 +13,12 @@
     radial-gradient(ellipse at 10% 50%, rgba(26,58,110,0.2) 0%, transparent 50%),
     radial-gradient(ellipse at 90% 30%, rgba(45,27,105,0.15) 0%, transparent 50%);
   pointer-events: none;
+}
+
+[data-theme="light"] .planets-section__bg {
+  background:
+    radial-gradient(ellipse at 10% 50%, rgba(138,180,248,0.1) 0%, transparent 50%),
+    radial-gradient(ellipse at 90% 30%, rgba(196,168,224,0.08) 0%, transparent 50%);
 }
 
 .planets-section__header {
@@ -33,6 +40,7 @@
   max-width: 500px;
   margin: 16px auto 0;
   line-height: 1.7;
+  transition: var(--theme-transition);
 }
 
 /* Loading */
@@ -57,6 +65,7 @@
   border: 2px solid transparent;
   border-top-color: var(--color-accent);
   animation: spin 1.2s linear infinite;
+  transition: var(--theme-transition);
 }
 
 .planets-section__loader-ring--2 {
@@ -72,6 +81,7 @@
   background: var(--color-accent);
   border-radius: 50%;
   animation: pulse-dot 1.2s ease-in-out infinite;
+  transition: var(--theme-transition);
 }
 
 @keyframes spin {
@@ -85,6 +95,7 @@
   text-transform: uppercase;
   color: var(--color-accent);
   animation: blink 1.5s ease-in-out infinite;
+  transition: var(--theme-transition);
 }
 
 @keyframes blink {
@@ -107,12 +118,13 @@
   display: flex;
   justify-content: center;
   margin-bottom: 40px;
+  border-radius: 4px;
 }
 
 /* Grid */
 .planets-section__grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
   gap: 24px;
 }
 
@@ -121,12 +133,28 @@
     grid-template-columns: repeat(2, 1fr);
     gap: 16px;
   }
+
+  .planets-section__header {
+    margin-bottom: 40px;
+  }
+
+  .planets-section__loading {
+    padding: 60px 0;
+  }
 }
 
 @media (max-width: 480px) {
   .planets-section__grid {
     grid-template-columns: 1fr;
-    max-width: 340px;
+    max-width: 400px;
     margin: 0 auto;
+  }
+
+  .planets-section__header {
+    margin-bottom: 32px;
+  }
+
+  .planets-section__desc {
+    font-size: 0.85rem;
   }
 }
