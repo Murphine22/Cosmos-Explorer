@@ -1,0 +1,162 @@
+.planet-card {
+  position: relative;
+  background: rgba(10, 22, 40, 0.7);
+  border: var(--border-subtle);
+  border-radius: 4px;
+  overflow: hidden;
+  transition: var(--transition);
+  animation: card-reveal 0.6s ease-out both;
+  cursor: default;
+}
+
+.planet-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(0, 212, 255, 0.35);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 0 30px var(--planet-glow, rgba(0,212,255,0.2));
+}
+
+@keyframes card-reveal {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Order badge */
+.planet-card__order {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  z-index: 10;
+  font-family: var(--font-display);
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--color-void);
+  padding: 4px 8px;
+  border-radius: 2px;
+}
+
+/* Figure */
+.planet-card__figure {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  margin: 0;
+}
+
+.planet-card__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  display: block;
+}
+
+.planet-card:hover .planet-card__image {
+  transform: scale(1.08);
+}
+
+.planet-card__image-fallback {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.planet-card__symbol {
+  font-size: 4rem;
+  filter: drop-shadow(0 0 20px currentColor);
+}
+
+.planet-card__image-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+/* Content */
+.planet-card__content {
+  padding: 20px 20px 16px;
+  position: relative;
+}
+
+.planet-card__symbol-label {
+  font-size: 1.2rem;
+  margin-bottom: 4px;
+  opacity: 0.6;
+}
+
+.planet-card__name {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: var(--color-white);
+  margin-bottom: 14px;
+  line-height: 1.1;
+}
+
+.planet-card__distance {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  margin-bottom: 14px;
+}
+
+.planet-card__distance-label {
+  font-family: var(--font-mono);
+  font-size: 0.55rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+
+.planet-card__distance-value {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-white);
+}
+
+.planet-card__distance-unit {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  color: var(--color-muted);
+  font-weight: 400;
+}
+
+.planet-card__divider {
+  height: 1px;
+  width: 60%;
+  margin-bottom: 12px;
+  opacity: 0.5;
+}
+
+.planet-card__fact {
+  font-size: 0.75rem;
+  color: var(--color-muted);
+  line-height: 1.6;
+  margin-bottom: 12px;
+}
+
+.planet-card__caption {
+  font-family: var(--font-mono);
+  font-size: 0.55rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(184, 212, 240, 0.3);
+}
+
+/* Hover glow */
+.planet-card__glow {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.planet-card:hover .planet-card__glow {
+  opacity: 1;
+}

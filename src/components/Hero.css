@@ -1,0 +1,435 @@
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  background: radial-gradient(ellipse at 20% 50%, rgba(26, 58, 110, 0.3) 0%, transparent 60%),
+              radial-gradient(ellipse at 80% 20%, rgba(45, 27, 105, 0.25) 0%, transparent 60%),
+              radial-gradient(ellipse at 50% 80%, rgba(107, 31, 74, 0.15) 0%, transparent 60%),
+              var(--color-void);
+}
+
+/* Nebula effects */
+.hero__nebula {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  pointer-events: none;
+}
+
+.hero__nebula--1 {
+  width: 600px;
+  height: 400px;
+  background: radial-gradient(ellipse, rgba(0, 212, 255, 0.12) 0%, transparent 70%);
+  top: 10%;
+  right: 5%;
+  animation: nebula-drift 15s ease-in-out infinite alternate;
+}
+
+.hero__nebula--2 {
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(ellipse, rgba(45, 27, 105, 0.2) 0%, transparent 70%);
+  bottom: 10%;
+  left: 10%;
+  animation: nebula-drift 20s ease-in-out infinite alternate-reverse;
+}
+
+.hero__nebula--3 {
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(ellipse, rgba(255, 107, 53, 0.08) 0%, transparent 70%);
+  top: 40%;
+  left: 45%;
+  animation: nebula-drift 12s ease-in-out infinite alternate;
+}
+
+@keyframes nebula-drift {
+  0% { transform: translate(0, 0) scale(1); }
+  100% { transform: translate(30px, -20px) scale(1.1); }
+}
+
+/* Solar System Visual */
+.hero__solar-system {
+  position: absolute;
+  right: -60px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 600px;
+  height: 600px;
+  pointer-events: none;
+}
+
+.hero__sun {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 60px;
+  height: 60px;
+}
+
+.hero__sun-glow {
+  position: absolute;
+  inset: -20px;
+  border-radius: 50%;
+  background: radial-gradient(ellipse, rgba(255, 200, 50, 0.4) 0%, rgba(255, 100, 30, 0.2) 40%, transparent 70%);
+  animation: sun-pulse 3s ease-in-out infinite;
+}
+
+.hero__sun-core {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: radial-gradient(ellipse at 30% 30%, #fff7c0, #ffd700 40%, #ff8c00 70%, #ff4500);
+  box-shadow: 0 0 30px #ffd700, 0 0 60px rgba(255, 150, 50, 0.5);
+  animation: sun-pulse 3s ease-in-out infinite;
+}
+
+@keyframes sun-pulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.05); opacity: 0.95; }
+}
+
+/* Orbit rings */
+.hero__orbit {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 212, 255, 0.1);
+  transform: translate(-50%, -50%);
+  transform-style: preserve-3d;
+}
+
+.hero__orbit--1 { width: 120px; height: 120px; animation: orbit-rotate 4s linear infinite; }
+.hero__orbit--2 { width: 200px; height: 200px; animation: orbit-rotate 8s linear infinite; }
+.hero__orbit--3 { width: 290px; height: 290px; animation: orbit-rotate 12s linear infinite; }
+.hero__orbit--4 { width: 380px; height: 380px; animation: orbit-rotate 18s linear infinite; }
+
+@keyframes orbit-rotate {
+  from { transform: translate(-50%, -50%) rotate(0deg); }
+  to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+/* Planets on orbits */
+.hero__planet {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  border-radius: 50%;
+}
+
+.hero__planet--mercury {
+  width: 10px;
+  height: 10px;
+  background: radial-gradient(ellipse at 30% 30%, #b5b5b5, #6e6e6e);
+  box-shadow: 0 0 8px rgba(180, 180, 180, 0.5);
+}
+
+.hero__planet--venus {
+  width: 16px;
+  height: 16px;
+  background: radial-gradient(ellipse at 30% 30%, #f5deb3, #d4a853 50%, #c8860a);
+  box-shadow: 0 0 10px rgba(213, 165, 70, 0.5);
+}
+
+.hero__planet--earth {
+  width: 18px;
+  height: 18px;
+  background: radial-gradient(ellipse at 30% 30%, #6fb3f5, #2d6db4 40%, #1a4a7a 70%, #4caf50);
+  box-shadow: 0 0 12px rgba(100, 180, 255, 0.6);
+  position: relative;
+}
+
+.hero__moon {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: radial-gradient(ellipse, #d4d4d4, #a0a0a0);
+  border-radius: 50%;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.hero__planet--mars {
+  width: 14px;
+  height: 14px;
+  background: radial-gradient(ellipse at 30% 30%, #e87c5c, #c0392b 50%, #922b21);
+  box-shadow: 0 0 10px rgba(220, 80, 50, 0.5);
+}
+
+/* Hero Content */
+.hero__content {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  padding-top: 100px;
+  padding-bottom: 60px;
+}
+
+.hero__text {
+  max-width: 620px;
+}
+
+/* Badge */
+.hero__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  background: rgba(0, 212, 255, 0.08);
+  border: var(--border-subtle);
+  padding: 6px 14px;
+  border-radius: 2px;
+  margin-bottom: 28px;
+  animation: fade-up 0.8s ease-out both;
+}
+
+.hero__badge-dot {
+  width: 6px;
+  height: 6px;
+  background: var(--color-accent);
+  border-radius: 50%;
+  animation: pulse-dot 2s ease-in-out infinite;
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(0.8); }
+}
+
+/* Title */
+.hero__title {
+  display: flex;
+  flex-direction: column;
+  font-family: var(--font-display);
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  line-height: 0.95;
+  margin-bottom: 28px;
+}
+
+.hero__title-line {
+  font-size: clamp(2.8rem, 7vw, 5.5rem);
+  color: var(--color-white);
+  animation: fade-up 0.8s ease-out 0.1s both;
+}
+
+.hero__title-accent {
+  font-size: clamp(3.5rem, 9vw, 7rem);
+  background: linear-gradient(90deg, var(--color-accent) 0%, #00aaff 30%, var(--color-gold) 70%, var(--color-orange) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: fade-up 0.8s ease-out 0.2s both;
+  filter: drop-shadow(0 0 20px rgba(0, 212, 255, 0.4));
+}
+
+.hero__subtitle {
+  font-size: clamp(0.9rem, 2vw, 1.05rem);
+  color: var(--color-muted);
+  line-height: 1.7;
+  margin-bottom: 36px;
+  max-width: 500px;
+  animation: fade-up 0.8s ease-out 0.3s both;
+}
+
+/* Stats */
+.hero__stats {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin-bottom: 40px;
+  animation: fade-up 0.8s ease-out 0.4s both;
+}
+
+.hero__stat {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.hero__stat-number {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--color-white);
+  line-height: 1;
+}
+
+.hero__stat-label {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+
+.hero__stat-divider {
+  width: 1px;
+  height: 40px;
+  background: rgba(0, 212, 255, 0.2);
+}
+
+/* CTAs */
+.hero__ctas {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  animation: fade-up 0.8s ease-out 0.5s both;
+  flex-wrap: wrap;
+}
+
+.hero__cta-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--color-accent);
+  color: var(--color-void);
+  border: none;
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  padding: 16px 32px;
+  cursor: pointer;
+  transition: var(--transition);
+  clip-path: polygon(0 0, calc(100% - 14px) 0, 100% 14px, 100% 100%, 14px 100%, 0 calc(100% - 14px));
+}
+
+.hero__cta-primary:hover {
+  background: var(--color-white);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 40px rgba(0, 212, 255, 0.4);
+}
+
+.hero__cta-arrow {
+  width: 18px;
+  height: 18px;
+  transition: var(--transition);
+}
+
+.hero__cta-primary:hover .hero__cta-arrow {
+  transform: translate(3px, -3px);
+}
+
+.hero__cta-secondary {
+  display: inline-flex;
+  align-items: center;
+  background: transparent;
+  color: var(--color-starlight);
+  border: var(--border-subtle);
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  padding: 16px 32px;
+  cursor: pointer;
+  transition: var(--transition);
+  clip-path: polygon(0 0, calc(100% - 14px) 0, 100% 14px, 100% 100%, 14px 100%, 0 calc(100% - 14px));
+}
+
+.hero__cta-secondary:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+  transform: translateY(-2px);
+}
+
+/* Scroll indicator */
+.hero__scroll-indicator {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  margin-top: 60px;
+  animation: fade-up 0.8s ease-out 0.7s both;
+}
+
+.hero__scroll-line {
+  width: 1px;
+  height: 60px;
+  background: linear-gradient(180deg, var(--color-accent), transparent);
+  animation: scroll-line 2s ease-in-out infinite;
+  margin-left: 4px;
+}
+
+@keyframes scroll-line {
+  0% { transform: scaleY(0); transform-origin: top; }
+  50% { transform: scaleY(1); transform-origin: top; }
+  51% { transform: scaleY(1); transform-origin: bottom; }
+  100% { transform: scaleY(0); transform-origin: bottom; }
+}
+
+.hero__scroll-text {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  transform: rotate(-90deg) translateX(-80px);
+  white-space: nowrap;
+}
+
+/* Animations */
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .hero__solar-system {
+    width: 400px;
+    height: 400px;
+    right: -100px;
+    opacity: 0.4;
+  }
+
+  .hero__orbit--4 { display: none; }
+}
+
+@media (max-width: 768px) {
+  .hero__solar-system {
+    width: 300px;
+    height: 300px;
+    top: 20%;
+    right: -60px;
+    transform: none;
+    opacity: 0.25;
+  }
+
+  .hero__orbit--3, .hero__orbit--4 { display: none; }
+
+  .hero__content {
+    padding-top: 120px;
+  }
+
+  .hero__scroll-indicator {
+    display: none;
+  }
+
+  .hero__stats {
+    gap: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero__ctas {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .hero__cta-primary,
+  .hero__cta-secondary {
+    justify-content: center;
+  }
+}
